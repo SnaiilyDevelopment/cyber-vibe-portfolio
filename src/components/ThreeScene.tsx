@@ -1,5 +1,5 @@
 
-import React, { useRef, Suspense } from 'react';
+import React, { useRef, Suspense, useEffect, useState } from 'react';
 import { Canvas, useThree, useFrame } from '@react-three/fiber';
 import { OrbitControls, PerspectiveCamera, Environment } from '@react-three/drei';
 import ParticleEffect from './ParticleEffect';
@@ -24,30 +24,91 @@ const CameraController = () => {
   return null;
 };
 
+// Dynamic color based on time of day
+const useTimeBasedColors = () => {
+  const [colors, setColors] = useState({
+    primary: "#4361EE",
+    secondary: "#00F5FF",
+    accent: "#7B5EA7"
+  });
+
+  useEffect(() => {
+    // Update colors based on time
+    const updateColors = () => {
+      const hours = new Date().getHours();
+      
+      // Morning (6am-12pm): Brighter blues
+      if (hours >= 6 && hours < 12) {
+        setColors({
+          primary: "#4361EE", // Blue
+          secondary: "#00F5FF", // Cyan
+          accent: "#7B5EA7" // Purple
+        });
+      } 
+      // Afternoon (12pm-6pm): Warmer tones
+      else if (hours >= 12 && hours < 18) {
+        setColors({
+          primary: "#5E60CE", // Warm blue
+          secondary: "#64DFDF", // Teal
+          accent: "#9B5DE5" // Light purple
+        });
+      } 
+      // Evening (6pm-12am): Deep purples
+      else if (hours >= 18 && hours < 24) {
+        setColors({
+          primary: "#3A0CA3", // Deep purple
+          secondary: "#4895EF", // Electric blue
+          accent: "#FF6B6B" // Warm accent
+        });
+      } 
+      // Night (12am-6am): Dark blues
+      else {
+        setColors({
+          primary: "#240046", // Dark purple
+          secondary: "#3F37C9", // Dark blue
+          accent: "#4CC9F0" // Bright accent
+        });
+      }
+    };
+
+    // Initial update
+    updateColors();
+    
+    // Update colors every hour
+    const interval = setInterval(updateColors, 60 * 60 * 1000);
+    
+    return () => clearInterval(interval);
+  }, []);
+
+  return colors;
+};
+
 // Main particle effect scene
 const ParticleScene = () => {
+  const colors = useTimeBasedColors();
+  
   return (
     <>
-      {/* Blue particles with mouse interaction */}
+      {/* Primary particles with mouse interaction */}
       <ParticleEffect 
         count={1000} 
-        color="#4361EE" 
+        color={colors.primary} 
         size={0.03} 
         speed={0.03} 
       />
       
-      {/* Cyan particles with mouse interaction */}
+      {/* Secondary particles with mouse interaction */}
       <ParticleEffect 
         count={500} 
-        color="#00F5FF" 
+        color={colors.secondary} 
         size={0.025} 
         speed={0.02} 
       />
       
-      {/* Purple particles with slow movement */}
+      {/* Accent particles with slow movement */}
       <ParticleEffect 
         count={300} 
-        color="#7B5EA7" 
+        color={colors.accent} 
         size={0.04} 
         speed={0.01} 
       />
