@@ -7,14 +7,52 @@ import Hero from '../components/Hero';
 import About from '../components/About';
 import Skills from '../components/Skills';
 import Projects from '../components/Projects';
+import CodeWall from '../components/CodeWall';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
+import VisitorCounter from '../components/VisitorCounter';
+import SeedDataButton from '../components/SeedDataButton';
+import { supabase } from '../integrations/supabase/client';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [isSeeding, setIsSeeding] = useState(false);
 
+  // Check if data needs to be seeded
   useEffect(() => {
-    // Simulate loading assets
+    const checkAndSeedData = async () => {
+      try {
+        // Check if we have any projects
+        const { data: projects, error } = await supabase
+          .from('projects')
+          .select('id')
+          .limit(1);
+        
+        if (error) throw error;
+        
+        // If no projects found, seed data
+        if (!projects || projects.length === 0) {
+          setIsSeeding(true);
+          
+          // Call seed-data function
+          const { error: seedError } = await supabase.functions.invoke('seed-data');
+          
+          if (seedError) throw seedError;
+          
+          console.log('Data seeded successfully');
+        }
+      } catch (error) {
+        console.error('Error checking/seeding data:', error);
+      } finally {
+        setIsSeeding(false);
+      }
+    };
+    
+    checkAndSeedData();
+  }, []);
+
+  // Simulate loading assets
+  useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 2000);
@@ -85,7 +123,7 @@ const Index = () => {
             transition={{ duration: 0.6 }}
           >
             <div className="loading-text">
-              <span>Loading</span>
+              <span>{isSeeding ? 'Initializing Data' : 'Loading'}</span>
               <span className="blink">_</span>
             </div>
           </motion.div>
@@ -107,8 +145,17 @@ const Index = () => {
           <About />
           <Skills />
           <Projects />
+          <CodeWall />
           <Contact />
           <Footer />
+          
+          {/* Visitor Counter - Fixed Position */}
+          <div className="fixed bottom-4 right-4 z-40">
+            <VisitorCounter />
+          </div>
+          
+          {/* Seed Data Button */}
+          <SeedDataButton />
         </div>
       </motion.div>
     </>
