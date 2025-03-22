@@ -119,7 +119,7 @@ const FloatingText = () => {
         bevelSegments={5}
         position={[0, 0, 0]}
       >
-        < CODE />
+        CODE
         <meshStandardMaterial color="#00F5FF" emissive="#00F5FF" emissiveIntensity={0.5} />
       </Text3D>
     </Float>
