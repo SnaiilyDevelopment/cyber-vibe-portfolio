@@ -130,9 +130,7 @@ const PerformanceMetrics = () => {
                   endAngle={0}
                 >
                   <RadialBar
-                    minAngle={15}
                     background
-                    clockWise={true}
                     dataKey="value"
                     cornerRadius={10}
                     label={{

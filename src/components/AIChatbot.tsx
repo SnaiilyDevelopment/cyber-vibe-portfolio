@@ -99,7 +99,7 @@ const AIChatbot = () => {
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-cyber-neon text-cyber-dark shadow-neon flex items-center justify-center transition-transform hover:scale-110"
+        className="fixed bottom-24 right-6 z-40 w-14 h-14 rounded-full bg-cyber-neon text-cyber-dark shadow-neon flex items-center justify-center transition-transform hover:scale-110"
         aria-label="Open chat assistant"
       >
         <MessageCircle size={24} />
@@ -112,7 +112,7 @@ const AIChatbot = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: 'spring', bounce: 0.3 }}
-            className="fixed bottom-24 right-6 z-50 w-80 md:w-96 h-96 rounded-lg overflow-hidden cyberpunk-border bg-cyber-dark/95 flex flex-col"
+            className="fixed bottom-24 right-24 z-50 w-80 md:w-96 h-96 rounded-lg overflow-hidden cyberpunk-border bg-cyber-dark/95 flex flex-col"
           >
             {/* Chat header */}
             <div className="p-3 bg-cyber-purple/20 border-b border-cyber-neon/20 flex justify-between items-center">

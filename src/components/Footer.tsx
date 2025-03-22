@@ -3,6 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUp, Github, Linkedin, Twitter, Mail } from 'lucide-react';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from './ui/hover-card';
+import { InteractiveText } from './ui/micro-interactions';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -23,13 +24,13 @@ const Footer = () => {
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyber-neon/50 to-transparent"></div>
       
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="flex flex-col"
+            className="flex flex-col md:col-span-2"
           >
             <h3 className="text-2xl font-bold text-gradient-neon mb-4">SnaillyDevs</h3>
             <p className="text-white/50 mb-4">Merging code with creativity to create immersive digital experiences.</p>
@@ -53,7 +54,9 @@ const Footer = () => {
               <FooterLink href="#about" label="About" />
               <FooterLink href="#skills" label="Skills" />
               <FooterLink href="#projects" label="Projects" />
-              <FooterLink href="#code" label="Code" />
+              <FooterLink href="#timeline" label="Career Journey" />
+              <FooterLink href="#performance" label="Metrics Dashboard" />
+              <FooterLink href="#code" label="Code Samples" />
               <FooterLink href="#contact" label="Contact" />
             </ul>
           </motion.div>
@@ -129,8 +132,7 @@ const FooterLink = ({ href, label }: { href: string, label: string }) => {
         href={href}
         className="text-white/60 hover:text-cyber-neon transition-colors relative group"
       >
-        {label}
-        <span className="absolute -bottom-1 left-0 w-0 h-px bg-cyber-neon group-hover:w-full transition-all duration-300"></span>
+        <InteractiveText>{label}</InteractiveText>
       </a>
     </li>
   );

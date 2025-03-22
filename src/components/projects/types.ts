@@ -12,6 +12,10 @@ export interface Project {
   challenges?: string;
   solution?: string;
   performance_metrics?: PerformanceMetrics;
+  seo_keywords?: string[];
+  meta_description?: string;
+  created_at?: string;
+  updated_at?: string;
 }
 
 export interface PerformanceMetrics {
@@ -21,6 +25,9 @@ export interface PerformanceMetrics {
   accessibility_score?: number;
   seo_score?: number;
   best_practices_score?: number;
+  time_to_interactive?: number;
+  performance_score?: number;
+  mobile_friendly?: boolean;
 }
 
 export interface Technology {

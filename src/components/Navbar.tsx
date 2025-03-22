@@ -12,6 +12,9 @@ const Navbar = () => {
     { name: 'About', href: '#about' },
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
+    { name: 'Timeline', href: '#timeline' },
+    { name: 'Metrics', href: '#performance' },
+    { name: 'Code', href: '#code' },
     { name: 'Contact', href: '#contact' }
   ];
   
@@ -45,7 +48,7 @@ const Navbar = () => {
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
         >
-          DV
+          SnaillyDevs
         </motion.div>
         
         {/* Desktop Navigation */}
