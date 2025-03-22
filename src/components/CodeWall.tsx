@@ -5,9 +5,12 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { useThree, useFrame } from '@react-three/fiber';
 import { Text3D, Float } from '@react-three/drei';
+import * as THREE from 'three';
 import { Code, Maximize2, Minimize2, Copy, Check } from 'lucide-react';
 import { supabase } from "../integrations/supabase/client";
 import { toast } from "sonner";
+import CodeBlock from './code/CodeBlock';
+import FloatingText from './code/FloatingText';
 
 interface CodeSnippet {
   id: string;
@@ -16,115 +19,6 @@ interface CodeSnippet {
   code: string;
   language: string;
 }
-
-const CodeBlock = ({ snippet, expanded, toggleExpand }: { 
-  snippet: CodeSnippet; 
-  expanded: boolean; 
-  toggleExpand: () => void;
-}) => {
-  const [copied, setCopied] = useState(false);
-
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(snippet.code);
-    setCopied(true);
-    toast.success("Code copied to clipboard");
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  return (
-    <motion.div 
-      className="glass-morphism rounded-lg overflow-hidden cyberpunk-border mb-8"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      <div className="p-4 flex justify-between items-center bg-cyber-dark/70">
-        <div className="flex items-center gap-2">
-          <Code size={18} className="text-cyber-neon" />
-          <h3 className="text-xl font-bold text-white">{snippet.title}</h3>
-        </div>
-        <div className="flex gap-2">
-          <button 
-            onClick={copyToClipboard} 
-            className="p-2 rounded-md hover:bg-white/10 text-white hover:text-cyber-neon transition-colors"
-            aria-label="Copy code to clipboard"
-          >
-            {copied ? <Check size={18} /> : <Copy size={18} />}
-          </button>
-          <button 
-            onClick={toggleExpand} 
-            className="p-2 rounded-md hover:bg-white/10 text-white hover:text-cyber-neon transition-colors"
-            aria-label={expanded ? "Minimize code" : "Expand code"}
-          >
-            {expanded ? <Minimize2 size={18} /> : <Maximize2 size={18} />}
-          </button>
-        </div>
-      </div>
-      
-      <div className="px-4 py-3 bg-cyber-dark/50">
-        <p className="text-white/70">{snippet.description}</p>
-      </div>
-      
-      <motion.div
-        initial={{ height: "200px" }}
-        animate={{ height: expanded ? "400px" : "200px" }}
-        transition={{ duration: 0.3 }}
-        className="overflow-hidden relative"
-      >
-        <SyntaxHighlighter
-          language={snippet.language}
-          style={atomDark}
-          customStyle={{
-            margin: 0,
-            borderRadius: 0,
-            background: 'transparent',
-            height: '100%',
-          }}
-          wrapLines={true}
-          showLineNumbers={true}
-        >
-          {snippet.code}
-        </SyntaxHighlighter>
-        
-        {!expanded && (
-          <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-cyber-dark to-transparent pointer-events-none" />
-        )}
-      </motion.div>
-    </motion.div>
-  );
-};
-
-const FloatingText = () => {
-  const { viewport } = useThree();
-  const textRef = useRef<THREE.Mesh>();
-  
-  useFrame(({ clock }) => {
-    if (textRef.current) {
-      textRef.current.position.y = Math.sin(clock.getElapsedTime() * 0.5) * 0.2;
-      textRef.current.rotation.y = Math.sin(clock.getElapsedTime() * 0.3) * 0.1;
-    }
-  });
-  
-  return (
-    <Float speed={2} rotationIntensity={0.2} floatIntensity={0.5}>
-      <Text3D
-        ref={textRef}
-        font="/fonts/inter_bold.json"
-        size={viewport.width / 20}
-        height={0.1}
-        curveSegments={12}
-        bevelEnabled
-        bevelThickness={0.02}
-        bevelSize={0.02}
-        bevelSegments={5}
-        position={[0, 0, 0]}
-      >
-        CODE
-        <meshStandardMaterial color="#00F5FF" emissive="#00F5FF" emissiveIntensity={0.5} />
-      </Text3D>
-    </Float>
-  );
-};
 
 const CodeWall: React.FC = () => {
   const [codeSnippets, setCodeSnippets] = useState<CodeSnippet[]>([]);

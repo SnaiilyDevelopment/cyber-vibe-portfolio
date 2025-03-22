@@ -8,11 +8,13 @@ import About from '../components/About';
 import Skills from '../components/Skills';
 import Projects from '../components/Projects';
 import CodeWall from '../components/CodeWall';
+import VibeCoding from '../components/VibeCoding';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import VisitorCounter from '../components/VisitorCounter';
 import SeedDataButton from '../components/SeedDataButton';
 import { supabase } from '../integrations/supabase/client';
+import { toast } from 'sonner';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -34,12 +36,22 @@ const Index = () => {
         if (!projects || projects.length === 0) {
           setIsSeeding(true);
           
-          // Call seed-data function
-          const { error: seedError } = await supabase.functions.invoke('seed-data');
-          
-          if (seedError) throw seedError;
-          
-          console.log('Data seeded successfully');
+          try {
+            // Call seed-data function
+            const { data, error: seedError } = await supabase.functions.invoke('seed-data');
+            
+            if (seedError) throw seedError;
+            
+            if (data && data.success) {
+              toast.success('Demo data seeded successfully!');
+              console.log('Data seeded successfully');
+            } else {
+              throw new Error('Failed to seed data');
+            }
+          } catch (seedError) {
+            console.error('Error seeding data:', seedError);
+            toast.error('Failed to seed demo data. Please try again.');
+          }
         }
       } catch (error) {
         console.error('Error checking/seeding data:', error);
@@ -146,6 +158,7 @@ const Index = () => {
           <Skills />
           <Projects />
           <CodeWall />
+          <VibeCoding />
           <Contact />
           <Footer />
           
