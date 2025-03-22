@@ -11,6 +11,16 @@ export interface Project {
   role?: string;
   challenges?: string;
   solution?: string;
+  performance_metrics?: PerformanceMetrics;
+}
+
+export interface PerformanceMetrics {
+  load_time?: number;
+  first_contentful_paint?: number;
+  largest_contentful_paint?: number;
+  accessibility_score?: number;
+  seo_score?: number;
+  best_practices_score?: number;
 }
 
 export interface Technology {
