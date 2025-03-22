@@ -27,8 +27,8 @@ const Hero = () => {
     );
     
     // Text typing animation using GSAP
-    const title = "Dev Synesthesia";
-    const subtitle = "Code Developer | Vibe Coder";
+    const title = "SnaIlyDevs";
+    const subtitle = "Code Developer | Digital Architect";
     
     if (titleRef.current) {
       titleRef.current.textContent = "";
@@ -100,14 +100,14 @@ const Hero = () => {
             ref={titleRef} 
             className="text-4xl md:text-6xl lg:text-7xl font-bold text-gradient-cyber mb-6"
           >
-            Dev Synesthesia
+            SnaIlyDevs
           </h1>
           
           <p 
             ref={subtitleRef}
             className="text-xl md:text-2xl font-mono text-white/80 mb-8"
           >
-            Code Developer | Vibe Coder
+            Code Developer | Digital Architect
           </p>
           
           <motion.div 

@@ -3,6 +3,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import ThreeScene from './ThreeScene';
 import { Play, Pause, Volume2, VolumeX } from 'lucide-react';
+import { toast } from 'sonner';
 
 const VibeCoding: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -143,9 +144,9 @@ const VibeCoding: React.FC = () => {
           className="text-center mb-16"
         >
           <span className="inline-block px-3 py-1 text-xs font-mono font-semibold text-cyber-neon bg-cyber-dark/50 rounded-full border border-cyber-neon/30 mb-4">
-            Creative Coding
+            Interactive Experiences
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Vibe Coding Gallery</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Audiovisual Experiments</h2>
           <p className="text-lg text-white/70 max-w-2xl mx-auto">
             Where code becomes art — interactive audiovisual experiments that merge programming with creativity.
           </p>
@@ -222,9 +223,9 @@ const VibeCoding: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-center mb-12"
         >
-          <h3 className="text-2xl font-bold text-white mb-4">Code + Art + Music</h3>
+          <h3 className="text-2xl font-bold text-white mb-4">Interactive Programming</h3>
           <p className="text-lg text-white/70 max-w-3xl mx-auto">
-            Vibe coding is the art of creating synesthetic experiences through code, where programming transcends its utilitarian purpose to become a medium of creative expression.
+            Exploring the intersection of code, art, and sound to create immersive experiences that engage multiple senses simultaneously.
           </p>
         </motion.div>
         
