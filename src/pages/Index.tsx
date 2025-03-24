@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ThreeScene from '../components/ThreeScene';
@@ -12,7 +11,6 @@ import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import VisitorCounter from '../components/VisitorCounter';
 import SeedDataButton from '../components/SeedDataButton';
-import AIChatbot from '../components/AIChatbot';
 import ResumeTimeline from '../components/resume/ResumeTimeline';
 import PerformanceMetrics from '../components/performance/PerformanceMetrics';
 import { supabase } from '../integrations/supabase/client';
@@ -169,9 +167,6 @@ const Index = () => {
           <div className="fixed bottom-4 right-4 z-40">
             <VisitorCounter />
           </div>
-          
-          {/* AI Chatbot */}
-          <AIChatbot />
           
           {/* Seed Data Button */}
           <SeedDataButton />
