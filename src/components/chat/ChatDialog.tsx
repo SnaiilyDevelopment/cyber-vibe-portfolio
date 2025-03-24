@@ -31,8 +31,7 @@ const ChatDialog: React.FC<ChatDialogProps> = ({
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
       <DialogContent 
         className="w-[90vw] max-w-md p-0 bg-cyber-dark/95 border-cyber-neon/20 rounded-lg overflow-hidden cyberpunk-border"
-        // Remove close button as we handle it in ChatHeader
-        closeButton={false}
+        hideCloseButton
       >
         {/* Chat header */}
         <ChatHeader onClose={() => handleOpenChange(false)} />
