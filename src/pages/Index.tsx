@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ThreeScene from '../components/ThreeScene';
@@ -6,7 +7,6 @@ import Hero from '../components/Hero';
 import About from '../components/About';
 import Skills from '../components/Skills';
 import Projects from '../components/Projects';
-import CodeWall from '../components/CodeWall';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import VisitorCounter from '../components/VisitorCounter';
@@ -159,7 +159,6 @@ const Index = () => {
           <Projects />
           <ResumeTimeline />
           <PerformanceMetrics />
-          <CodeWall />
           <Contact />
           <Footer />
           

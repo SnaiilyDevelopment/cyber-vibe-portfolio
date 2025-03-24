@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import ProjectCard from './projects/ProjectCard';
 import ProjectFilters from './projects/ProjectFilters';
 import ProjectModal from './projects/ProjectModal';
+import ProjectAnalytics from './projects/ProjectAnalytics';
 import { Project, Technology } from './projects/types';
 
 const Projects: React.FC = () => {
@@ -16,6 +17,7 @@ const Projects: React.FC = () => {
   const [technologies, setTechnologies] = useState<Technology[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [analyticsProject, setAnalyticsProject] = useState<Project | null>(null);
   
   // Fetch projects and technologies from Supabase
   useEffect(() => {
@@ -148,6 +150,17 @@ const Projects: React.FC = () => {
     document.body.style.overflow = ''; // Restore scrolling
   };
   
+  // Handle project analytics view
+  const openProjectAnalytics = (project: Project) => {
+    setAnalyticsProject(project);
+    document.body.style.overflow = 'hidden'; // Prevent scrolling
+  };
+  
+  const closeProjectAnalytics = () => {
+    setAnalyticsProject(null);
+    document.body.style.overflow = ''; // Restore scrolling
+  };
+  
   return (
     <section 
       id="projects" 
@@ -207,6 +220,7 @@ const Projects: React.FC = () => {
                   key={project.id} 
                   project={project} 
                   onClick={() => openProjectDetails(project)} 
+                  onViewAnalytics={() => openProjectAnalytics(project)}
                 />
               ))
             ) : (
@@ -223,6 +237,13 @@ const Projects: React.FC = () => {
         isOpen={!!selectedProject}
         onClose={closeProjectDetails}
         project={selectedProject}
+      />
+      
+      {/* Project Analytics Modal */}
+      <ProjectAnalytics
+        isOpen={!!analyticsProject}
+        onClose={closeProjectAnalytics}
+        project={analyticsProject}
       />
     </section>
   );

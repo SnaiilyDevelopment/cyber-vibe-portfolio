@@ -1,15 +1,16 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, ZoomIn } from 'lucide-react';
+import { Github, ExternalLink, ZoomIn, BarChart2 } from 'lucide-react';
 import { Project } from './types';
 
 interface ProjectCardProps {
   project: Project;
   onClick: () => void;
+  onViewAnalytics: () => void;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick, onViewAnalytics }) => {
   const [isHovered, setIsHovered] = useState(false);
   
   const cardVariants = {
@@ -93,6 +94,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
               aria-label="View project details"
             >
               <ZoomIn size={18} />
+            </button>
+            
+            <button
+              className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white hover:text-cyber-neon transition-colors"
+              aria-label="View project analytics"
+              onClick={(e) => {
+                e.stopPropagation(); // Prevent card click
+                onViewAnalytics();
+              }}
+            >
+              <BarChart2 size={18} />
             </button>
           </div>
         </div>
