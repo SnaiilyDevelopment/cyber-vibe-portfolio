@@ -16,6 +16,19 @@ export interface Project {
   meta_description?: string;
   created_at?: string;
   updated_at?: string;
+  category?: 'frontend' | 'backend' | 'fullstack' | 'mobile' | '3d' | 'design';
+  duration?: string;
+  client?: string;
+  testimonial?: string;
+  impact?: string;
+  code_snippets?: CodeSnippet[];
+}
+
+export interface CodeSnippet {
+  language: string;
+  title: string;
+  code: string;
+  description?: string;
 }
 
 export interface PerformanceMetrics {
