@@ -24,3 +24,19 @@ export interface ChatInputProps {
 export interface ResponseDatabase {
   [keyword: string]: string;
 }
+
+export interface AIChatbotProps {
+  chatButtonRef?: React.RefObject<HTMLButtonElement>;
+}
+
+export interface ChatDialogProps {
+  isOpen: boolean;
+  setIsOpen: (open: boolean) => void;
+  messages: Message[];
+  input: string;
+  setInput: React.Dispatch<React.SetStateAction<string>>;
+  isTyping: boolean;
+  messagesEndRef: React.RefObject<HTMLDivElement>;
+  handleSendMessage: () => void;
+  handleKeyDown: (e: React.KeyboardEvent) => void;
+}

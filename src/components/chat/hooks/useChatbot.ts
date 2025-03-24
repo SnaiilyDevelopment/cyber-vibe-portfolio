@@ -25,6 +25,13 @@ export const useChatbot = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
   
+  // Reset input when the chat opens/closes
+  useEffect(() => {
+    if (isOpen) {
+      setInput('');
+    }
+  }, [isOpen]);
+  
   const generateResponse = (message: string): string => {
     // In a real implementation, this would call an AI service
     // For now, we'll use simple keyword matching
