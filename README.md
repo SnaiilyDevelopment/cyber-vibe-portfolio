@@ -1,69 +1,71 @@
-# Welcome to your Lovable project
 
-## Project info
+# Code Alchemist Portfolio
 
-**URL**: https://lovable.dev/projects/4e54dbab-2841-45d7-be3f-266e5bd9d8ec
+## Project Overview
 
-## How can I edit this code?
+A cyberpunk-inspired portfolio website for a code alchemist, featuring:
 
-There are several ways of editing your application.
+- Interactive 3D elements with Three.js and React Three Fiber
+- Particle effects and animations
+- Time-based color changes
+- Responsive design
+- Performance optimized
 
-**Use Lovable**
+## Technologies Used
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/4e54dbab-2841-45d7-be3f-266e5bd9d8ec) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with .
+This project is built with:
 
 - Vite
 - TypeScript
 - React
 - shadcn-ui
 - Tailwind CSS
+- Three.js
+- React Three Fiber
+- Framer Motion
+- Supabase
 
-## How can I deploy this project?
+## Getting Started
 
-Simply open [Lovable](https://lovable.dev/projects/4e54dbab-2841-45d7-be3f-266e5bd9d8ec) and click on Share -> Publish.
+The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-## I want to use a custom domain - is that possible?
+Follow these steps:
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+```sh
+# Step 1: Clone the repository
+git clone <YOUR_GIT_URL>
+
+# Step 2: Navigate to the project directory
+cd <YOUR_PROJECT_NAME>
+
+# Step 3: Install the necessary dependencies
+npm i
+
+# Step 4: Start the development server
+npm run dev
+```
+
+## Deployment
+
+You can deploy this project using any static site hosting service like:
+
+- Netlify
+- Vercel
+- GitHub Pages
+- AWS S3 + CloudFront
+- Firebase Hosting
+
+## Features
+
+- Dynamic 3D background with particle effects
+- Interactive UI elements
+- Project showcase with filtering
+- Performance metrics visualization
+- Responsive design for all devices
+- Time-based theme changes
+- Custom cursor effects
+- Optimized for performance and SEO
+
+## License
+
+This project is available under the MIT License.
