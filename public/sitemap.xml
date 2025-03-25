@@ -3,56 +3,71 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>https://snaillydevs.com/</loc>
-    <lastmod>2023-08-15</lastmod>
+    <lastmod>2023-09-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://snaillydevs.com/lovable-uploads/aa6d2e9f-e481-4679-bd22-fb73a40246b5.png</image:loc>
+      <image:title>SnaillyDevs Portfolio</image:title>
+      <image:caption>Code Alchemist Portfolio Showcase</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://snaillydevs.com/#about</loc>
-    <lastmod>2023-08-15</lastmod>
+    <lastmod>2023-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://snaillydevs.com/#skills</loc>
-    <lastmod>2023-08-15</lastmod>
+    <lastmod>2023-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://snaillydevs.com/#projects</loc>
-    <lastmod>2023-08-15</lastmod>
+    <lastmod>2023-09-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://snaillydevs.com/lovable-uploads/503bc110-8232-4e3e-8caa-a8ef73ade003.png</image:loc>
-      <image:title>SnaillyDevs Projects</image:title>
+      <image:loc>https://snaillydevs.com/lovable-uploads/aa6d2e9f-e481-4679-bd22-fb73a40246b5.png</image:loc>
+      <image:title>Neural Network Visualizer</image:title>
+      <image:caption>Interactive 3D visualization of neural networks</image:caption>
     </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://snaillydevs.com/lovable-uploads/aa6d2e9f-e481-4679-bd22-fb73a40246b5.png</video:thumbnail_loc>
+      <video:title>Neural Network Visualizer Demo</video:title>
+      <video:description>Interactive 3D visualization demo of the neural network project</video:description>
+      <video:content_loc>https://snaillydevs.com/videos/neural-network-demo.mp4</video:content_loc>
+      <video:player_loc>https://snaillydevs.com/video-player</video:player_loc>
+      <video:duration>60</video:duration>
+    </video:video>
   </url>
   <url>
     <loc>https://snaillydevs.com/#timeline</loc>
-    <lastmod>2023-08-15</lastmod>
+    <lastmod>2023-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://snaillydevs.com/#performance</loc>
-    <lastmod>2023-08-15</lastmod>
+    <lastmod>2023-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://snaillydevs.com/#code</loc>
-    <lastmod>2023-08-15</lastmod>
+    <lastmod>2023-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://snaillydevs.com/#contact</loc>
-    <lastmod>2023-08-15</lastmod>
+    <lastmod>2023-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

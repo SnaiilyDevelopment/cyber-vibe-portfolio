@@ -1,27 +1,22 @@
 
-# Robots.txt for Snaillydevs Portfolio
+# Robots.txt for SnaillyDevs Portfolio
 User-agent: *
 Allow: /
 
-# Set ideal crawl rate
-Crawl-delay: 5
+# Set optimal crawl rate
+Crawl-delay: 3
 
 # Sitemaps
 Sitemap: https://snaillydevs.com/sitemap.xml
 
-# Disallow directories
-Disallow: /admin/
-Disallow: /private/
-Disallow: /api/
-
 # Allow specific bots with higher priority
 User-agent: Googlebot
 Allow: /
-Crawl-delay: 2
+Crawl-delay: 1
 
 User-agent: Bingbot
 Allow: /
-Crawl-delay: 2
+Crawl-delay: 1
 
 User-agent: Twitterbot
 Allow: /
@@ -36,3 +31,7 @@ Allow: /
 # Allow mobile-specific content to be indexed
 User-agent: Googlebot-Mobile
 Allow: /
+
+# Indicate support for JSON-LD structured data
+User-agent: *
+Allow: /schema.org$

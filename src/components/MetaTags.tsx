@@ -9,6 +9,7 @@ interface MetaTagsProps {
   ogImage?: string;
   ogUrl?: string;
   structuredData?: Record<string, any>;
+  type?: string;
 }
 
 const MetaTags: React.FC<MetaTagsProps> = ({
@@ -29,16 +30,25 @@ const MetaTags: React.FC<MetaTagsProps> = ({
     "cyberpunk design",
     "immersive web",
     "GSAP animations",
-    "performance optimization"
+    "performance optimization",
+    "WebGL",
+    "TensorFlow.js",
+    "machine learning visualization"
   ],
-  ogImage = "/lovable-uploads/503bc110-8232-4e3e-8caa-a8ef73ade003.png",
+  ogImage = "/lovable-uploads/aa6d2e9f-e481-4679-bd22-fb73a40246b5.png",
   ogUrl = "https://snaillydevs.com",
-  structuredData = {
+  structuredData,
+  type = "website"
+}) => {
+  const formattedKeywords = keywords.join(", ");
+  
+  // Default structured data if none provided
+  const defaultStructuredData = {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "SnaillyDevs",
     "url": "https://snaillydevs.com",
-    "image": "/lovable-uploads/503bc110-8232-4e3e-8caa-a8ef73ade003.png",
+    "image": ogImage,
     "sameAs": [
       "https://github.com/snaillydevs",
       "https://twitter.com/snaillydevs",
@@ -49,10 +59,51 @@ const MetaTags: React.FC<MetaTagsProps> = ({
       "@type": "Organization",
       "name": "Digital Alchemy Labs"
     },
-    "description": "Portfolio of a passionate code alchemist specializing in creating immersive digital experiences with neural network topologies and quantum circuit design."
-  }
-}) => {
-  const formattedKeywords = keywords.join(", ");
+    "description": description,
+    "knowsAbout": [
+      "React",
+      "Three.js",
+      "WebGL",
+      "TensorFlow.js",
+      "Machine Learning Visualization",
+      "Interactive 3D Graphics",
+      "Frontend Development",
+      "Creative Coding"
+    ]
+  };
+  
+  // Portfolio collection structured data
+  const portfolioStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "SnaillyDevs Portfolio Projects",
+    "description": "A collection of innovative web projects focusing on interactive visualizations and creative coding",
+    "url": "https://snaillydevs.com/#projects",
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "url": "https://snaillydevs.com/#projects",
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Neural Network Visualizer",
+            "applicationCategory": "WebApplication",
+            "operatingSystem": "Web Browser",
+            "description": "Interactive 3D visualization of neural networks that helps explain machine learning concepts in an intuitive way."
+          }
+        }
+      ]
+    }
+  };
+  
+  // Combine all structured data
+  const allStructuredData = [
+    defaultStructuredData,
+    portfolioStructuredData,
+    structuredData
+  ].filter(Boolean);
   
   return (
     <Helmet>
@@ -64,7 +115,7 @@ const MetaTags: React.FC<MetaTagsProps> = ({
       <meta name="author" content="SnaillyDevs" />
       
       {/* Open Graph / Facebook */}
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content={type} />
       <meta property="og:url" content={ogUrl} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
@@ -90,14 +141,17 @@ const MetaTags: React.FC<MetaTagsProps> = ({
       <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
       <link rel="canonical" href={ogUrl} />
       
-      {/* Preconnect to essential domains */}
+      {/* Preload critical resources */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link rel="preload" as="image" href={ogImage} />
       
       {/* Structured Data for Rich Snippets */}
-      <script type="application/ld+json">
-        {JSON.stringify(structuredData)}
-      </script>
+      {allStructuredData.map((data, index) => (
+        <script key={index} type="application/ld+json">
+          {JSON.stringify(data)}
+        </script>
+      ))}
     </Helmet>
   );
 };

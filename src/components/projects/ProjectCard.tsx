@@ -36,26 +36,27 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick, onViewAnaly
           src={project.image_url} 
           alt={project.title} 
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          loading="lazy"
         />
         
         <div className="absolute inset-0 bg-gradient-to-t from-cyber-dark via-cyber-dark/60 to-transparent opacity-80"></div>
         
         {/* Content Overlay */}
         <div className="absolute inset-0 p-6 flex flex-col justify-end">
+          <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-cyber-neon transition-colors mb-3">
+            {project.title}
+          </h3>
+          
           <div className="flex flex-wrap gap-2 mb-3">
             {project.technologies?.map((tech) => (
               <span 
                 key={tech} 
-                className="text-xs font-mono px-2 py-1 rounded-full bg-cyber-purple/30 text-white/90"
+                className="text-xs font-mono px-3 py-1 rounded-full bg-cyber-purple text-white"
               >
                 {tech}
               </span>
             ))}
           </div>
-          
-          <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-cyber-neon transition-colors">
-            {project.title}
-          </h3>
           
           <p className="text-white/70 mt-2 text-sm line-clamp-2 md:line-clamp-3">
             {project.description}
