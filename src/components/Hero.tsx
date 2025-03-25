@@ -7,6 +7,7 @@ import { ArrowDown } from 'lucide-react';
 const Hero = () => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const gradientRef = useRef<HTMLSpanElement>(null);
   
   useEffect(() => {
     if (!titleRef.current || !subtitleRef.current) return;
@@ -71,6 +72,16 @@ const Hero = () => {
         });
       });
     }
+    
+    // Animate the gradient moving from left to right
+    if (gradientRef.current) {
+      gsap.to(gradientRef.current, {
+        backgroundPosition: "200% center",
+        duration: 8,
+        repeat: -1,
+        ease: "linear"
+      });
+    }
   }, []);
   
   // Scroll to About section
@@ -97,10 +108,15 @@ const Hero = () => {
           </motion.div>
           
           <h1 
-            ref={titleRef} 
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-gradient-cyber mb-6"
+            ref={titleRef}
+            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 relative"
           >
-            SnaillyDevs
+            <span 
+              ref={gradientRef}
+              className="moving-gradient-text"
+            >
+              SnaillyDevs
+            </span>
           </h1>
           
           <p 
