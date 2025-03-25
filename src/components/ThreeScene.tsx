@@ -144,7 +144,9 @@ const ThreeScene: React.FC<SceneProps> = ({ children }) => {
           {/* Environment lighting */}
           <ambientLight intensity={0.2} />
           <pointLight position={[10, 10, 10]} intensity={0.5} />
-          <Environment preset="night" />
+          
+          {/* Replace Environment preset with manual lighting setup */}
+          <hemisphereLight intensity={0.5} color="#8866ff" groundColor="#000033" />
         </Suspense>
       </Canvas>
     </div>

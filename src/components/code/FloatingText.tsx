@@ -30,7 +30,13 @@ const FloatingText: React.FC = () => {
         position={[0, 0, 0]}
       >
         CODE
-        <meshStandardMaterial color="#00F5FF" emissive="#00F5FF" emissiveIntensity={0.5} />
+        <meshStandardMaterial 
+          color="#00F5FF" 
+          emissive="#00F5FF" 
+          emissiveIntensity={0.5}
+          roughness={0.3}
+          metalness={0.7}
+        />
       </Text3D>
     </Float>
   );
