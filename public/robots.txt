@@ -4,7 +4,7 @@ User-agent: *
 Allow: /
 
 # Set optimal crawl rate
-Crawl-delay: 3
+Crawl-delay: 2
 
 # Sitemaps
 Sitemap: https://snaillydevs.com/sitemap.xml
@@ -35,3 +35,10 @@ Allow: /
 # Indicate support for JSON-LD structured data
 User-agent: *
 Allow: /schema.org$
+
+# Ensure crawlers can access important paths
+User-agent: *
+Allow: /projects
+Allow: /skills
+Allow: /about
+Allow: /contact

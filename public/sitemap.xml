@@ -5,6 +5,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <!-- Main Homepage -->
   <url>
     <loc>https://snaillydevs.com/</loc>
     <lastmod>2023-09-15</lastmod>
@@ -16,6 +17,8 @@
       <image:caption>Code Alchemist Portfolio Showcase</image:caption>
     </image:image>
   </url>
+  
+  <!-- Main Sections -->
   <url>
     <loc>https://snaillydevs.com/#about</loc>
     <lastmod>2023-09-15</lastmod>
@@ -70,5 +73,19 @@
     <lastmod>2023-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  
+  <!-- Individual Project Pages (for future expansions) -->
+  <url>
+    <loc>https://snaillydevs.com/projects/neural-network-visualizer</loc>
+    <lastmod>2023-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://snaillydevs.com/projects/quantum-circuit-simulator</loc>
+    <lastmod>2023-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

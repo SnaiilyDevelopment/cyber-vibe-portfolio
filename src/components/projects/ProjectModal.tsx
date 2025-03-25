@@ -47,7 +47,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto"
-          aria-labelledby="project-modal-title"
+          aria-labelledby={`project-modal-title-${project.id}`}
           role="dialog"
           aria-modal="true"
         >
@@ -73,8 +73,9 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
               className="absolute top-4 right-4 z-20 p-2 rounded-full bg-cyber-dark/70 text-white hover:text-cyber-neon hover:bg-cyber-dark transition-colors"
               onClick={onClose}
               aria-label="Close modal"
+              name="close-modal"
             >
-              <X size={24} />
+              <X size={24} aria-hidden="true" />
             </button>
             
             {/* Project Details */}

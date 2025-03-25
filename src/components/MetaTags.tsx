@@ -98,10 +98,52 @@ const MetaTags: React.FC<MetaTagsProps> = ({
     }
   };
   
+  // BreadcrumbList structured data for navigation
+  const breadcrumbStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://snaillydevs.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Projects",
+        "item": "https://snaillydevs.com/#projects"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Contact",
+        "item": "https://snaillydevs.com/#contact"
+      }
+    ]
+  };
+  
+  // WebSite structured data
+  const websiteStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "url": "https://snaillydevs.com/",
+    "name": "SnaillyDevs Portfolio",
+    "description": description,
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://snaillydevs.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  };
+  
   // Combine all structured data
   const allStructuredData = [
     defaultStructuredData,
     portfolioStructuredData,
+    breadcrumbStructuredData,
+    websiteStructuredData,
     structuredData
   ].filter(Boolean);
   
@@ -145,6 +187,19 @@ const MetaTags: React.FC<MetaTagsProps> = ({
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <link rel="preload" as="image" href={ogImage} />
+      
+      {/* Mobile-specific meta tags */}
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+      <meta name="format-detection" content="telephone=no" />
+      <meta name="mobile-web-app-capable" content="yes" />
+      
+      {/* Performance and security headers */}
+      <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
+      <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains" />
+      <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+      <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+      <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
       
       {/* Structured Data for Rich Snippets */}
       {allStructuredData.map((data, index) => (
